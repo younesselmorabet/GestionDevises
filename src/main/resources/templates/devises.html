@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gestion des Devises</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { border-collapse: collapse; }
+        th, td { border: 1px solid; padding: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Gestion des Devises (ADMIN)</h1>
+
+    <!-- Lien retour à conversion -->
+    <a th:href="@{/convert}">Retour à la conversion</a>
+
+    <!-- Form déconnexion (POST sûr) -->
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Déconnexion</button>
+    </form>
+
+    <form th:action="@{/devises/save}" th:object="${devise}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        Code: <input type="text" th:field="*{code}" />
+        Nom: <input type="text" th:field="*{nom}" />
+        Taux: <input type="number" th:field="*{taux}" />
+        <button type="submit">Enregistrer</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Code</th>
+            <th>Nom</th>
+            <th>Taux</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="devise : ${devises}">
+            <td th:text="${devise.id}"></td>
+            <td th:text="${devise.code}"></td>
+            <td th:text="${devise.nom}"></td>
+            <td th:text="${devise.taux}"></td>
+            <td>
+                <a th:href="@{/devises/edit/{id}(id=${devise.id})}">Modifier</a>
+                <a th:href="@{/devises/delete/{id}(id=${devise.id})}">Supprimer</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,28 @@
+# Fichiers Eclipse
+.settings/
+.classpath
+.project
+.factorypath
+
+# Fichiers Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+
+# Fichiers IDE
+*.iml
+.idea/
+*.iws
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Fichiers de base de données H2 (si vous utilisez H2)
+*.db
+*.mv.db
+*.trace.db
